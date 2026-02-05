@@ -1,0 +1,121 @@
+---
+title: GraphQL
+description: Use GraphQL to precisely define the fields in your response
+---
+
+The Harmonic GraphQL API lets you request exactly the data you need, reducing response payload size and improving performance.
+
+## Endpoint
+
+```
+POST https://api.harmonic.ai/graphql
+```
+
+## Authentication
+
+Pass your API key via the `apikey` header, the same as the REST API:
+
+```bash
+curl -X POST 'https://api.harmonic.ai/graphql' \
+  -H 'Content-Type: application/json' \
+  -H 'apikey: your_api_key' \
+  -d '{"query": "{ company(id: 1) { name domain } }"}'
+```
+
+## GraphQL Explorer
+
+The Harmonic Console includes an interactive GraphQL Explorer where you can build and test queries against the full schema. Access it at [console.harmonic.ai](https://console.harmonic.ai).
+
+The explorer provides:
+
+- **Auto-complete** for fields and types
+- **Schema documentation** built into the sidebar
+- **Query history** so you can revisit past queries
+
+## Example queries
+
+### Get a company profile
+
+```graphql
+query {
+  company(id: 12345) {
+    name
+    domain
+    description
+    foundedDate
+    headcount
+    funding {
+      totalFunding
+      lastRoundDate
+      lastRoundType
+      lastRoundAmount
+    }
+  }
+}
+```
+
+### Get a person profile
+
+```graphql
+query {
+  person(id: 67890) {
+    name
+    linkedinUrl
+    currentTitle
+    currentCompany {
+      name
+      domain
+    }
+  }
+}
+```
+
+### Paginate through search results
+
+```graphql
+query {
+  savedSearchResults(urn: "urn:harmonic:saved_search:123", first: 50) {
+    edges {
+      node {
+        name
+        domain
+      }
+    }
+    pageInfo {
+      hasNext
+      cursor
+    }
+  }
+}
+```
+
+## GraphQL-only features
+
+Some features are only available through GraphQL:
+
+- **Financing / Deal Data** — Investor profiles, investments, and co-investors (paid add-on)
+- **Network queries** — People and companies in your team's network
+- **Watchlist updates** — Recent changes to people watchlist entries
+- **Global field values** — Read custom global field values on companies and people
+
+See the relevant API Reference sections for details on each.
+
+## Pagination in GraphQL
+
+GraphQL queries use cursor-based pagination with `first`/`after` parameters:
+
+| Parameter | Description |
+|-----------|-------------|
+| `first` | Number of results to return |
+| `after` | Cursor from the previous page's `pageInfo.cursor` |
+
+The response includes a `pageInfo` object:
+
+| Field | Description |
+|-------|-------------|
+| `hasNext` | Whether more results are available |
+| `cursor` | Cursor for fetching the next page |
+
+## Rate limits
+
+The GraphQL endpoint shares the same [rate limits](/guides/rate-limits) as the REST API: 10 requests per second.

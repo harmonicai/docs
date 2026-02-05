@@ -1,0 +1,109 @@
+---
+title: Company Global Fields
+description: Manage custom fields that apply across all companies
+---
+
+Company Global Fields let you define custom fields that are available across all company records, not just within a specific watchlist.
+
+## Get company global fields
+
+<Info>**GET** `/companies/custom_fields`</Info>
+
+Retrieve all company global fields.
+
+```bash
+curl 'https://api.harmonic.ai/companies/custom_fields' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Create company global field
+
+<Info>**POST** `/companies/custom_field`</Info>
+
+Create a new company global field.
+
+### Request body
+
+<ParamField body="name" type="string" required>
+  Name of the global field.
+</ParamField>
+
+<ParamField body="type" type="string" required>
+  Field type. One of: `TEXT`, `NUMBER`, `DATE`, `SINGLE_SELECT`, `MULTI_SELECT`, `PERSON`, `WEBSITE`, `CHECKBOX`, `STATUS`.
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Additional metadata (e.g., select options).
+</ParamField>
+
+---
+
+## Update company global field
+
+<Info>**PUT** `/companies/custom_field`</Info>
+
+Update an existing company global field.
+
+### Request body
+
+<ParamField body="custom_field_urn" type="string" required>
+  The URN of the global field.
+</ParamField>
+
+<ParamField body="name" type="string">
+  Updated name.
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Updated metadata.
+</ParamField>
+
+---
+
+## Delete company global field
+
+<Info>**DELETE** `/companies/custom_field`</Info>
+
+Delete a company global field. This removes the field and all associated values.
+
+### Request body
+
+<ParamField body="custom_field_urn" type="string" required>
+  The URN of the global field to delete.
+</ParamField>
+
+---
+
+## Upsert company global field values
+
+<Info>**POST** `/companies/entries`</Info>
+
+Set or update global field values for one or more companies.
+
+### Request body
+
+<ParamField body="entries" type="array" required>
+  Array of entries, each containing a company identifier and field values.
+</ParamField>
+
+---
+
+## Get global field values
+
+<Info>**GraphQL only**</Info>
+
+Retrieve global field values for companies. Available via GraphQL only.
+
+```graphql
+query {
+  company(id: 12345) {
+    name
+    globalFields {
+      fieldUrn
+      value
+    }
+  }
+}
+```

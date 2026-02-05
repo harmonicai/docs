@@ -1,0 +1,322 @@
+---
+title: People Lists
+description: Manage people watchlists, custom fields, and list entries
+---
+
+People Lists (watchlists) let you organize and track collections of people with custom fields and views.
+
+## Get people watchlists
+
+<Info>**GET** `/watchlists/people`</Info>
+
+Retrieve all people watchlists for your team.
+
+```bash
+curl 'https://api.harmonic.ai/watchlists/people' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Get people watchlist
+
+<Info>**GET** `/watchlists/people/{id_or_urn}`</Info>
+
+Retrieve a specific people watchlist.
+
+### Path parameters
+
+<ParamField path="id_or_urn" type="string" required>
+  The watchlist ID or URN.
+</ParamField>
+
+---
+
+## Get people watchlist entries
+
+<Info>**GET** `/watchlists/people/{id_or_urn}/entries`</Info>
+
+Retrieve entries from a people watchlist.
+
+### Query parameters
+
+<ParamField query="sort_field" type="string">
+  Field to sort results by.
+</ParamField>
+
+<ParamField query="sort_descending" type="boolean">
+  Whether to sort in descending order.
+</ParamField>
+
+---
+
+## Create people watchlist
+
+<Info>**POST** `/watchlists/people`</Info>
+
+Create a new people watchlist.
+
+### Request body
+
+<ParamField body="name" type="string" required>
+  Name of the watchlist.
+</ParamField>
+
+<ParamField body="shared_with_team" type="boolean">
+  Whether to share this list with your team.
+</ParamField>
+
+<ParamField body="people" type="array">
+  Initial list of person IDs or URNs to add.
+</ParamField>
+
+### Example
+
+```bash
+curl -X POST 'https://api.harmonic.ai/watchlists/people' \
+  -H 'apikey: your_api_key' \
+  -H 'Content-Type: application/json' \
+  -d '{"name": "Target Founders", "shared_with_team": true}'
+```
+
+---
+
+## Update people watchlist
+
+<Info>**PUT** `/watchlists/people/{id_or_urn}`</Info>
+
+Update a people watchlist's name or sharing settings.
+
+### Request body
+
+<ParamField body="name" type="string">
+  Updated name.
+</ParamField>
+
+<ParamField body="shared_with_team" type="boolean">
+  Updated sharing setting.
+</ParamField>
+
+---
+
+## Add people to watchlist
+
+<Info>**POST** `/watchlists/people/{id_or_urn}:addPeople`</Info>
+
+Add people to an existing watchlist.
+
+### Request body
+
+<ParamField body="ids" type="array[integer]">
+  Person IDs to add.
+</ParamField>
+
+<ParamField body="urns" type="array[string]">
+  Person URNs to add.
+</ParamField>
+
+---
+
+## Remove people from watchlist
+
+<Info>**POST** `/watchlists/people/{id_or_urn}:removePeople`</Info>
+
+Remove people from a watchlist.
+
+### Request body
+
+<ParamField body="ids" type="array[integer]">
+  Person IDs to remove.
+</ParamField>
+
+<ParamField body="urns" type="array[string]">
+  Person URNs to remove.
+</ParamField>
+
+---
+
+## Delete people watchlist
+
+<Info>**DELETE** `/watchlists/people/{id_or_urn}`</Info>
+
+Permanently delete a people watchlist.
+
+---
+
+## Upsert people watchlist named view
+
+<Info>**POST** `/watchlists/people/{id_or_urn}/named_views`</Info>
+
+Create or update a named view for a people watchlist.
+
+### Request body
+
+<ParamField body="name" type="string" required>
+  Name of the view.
+</ParamField>
+
+<ParamField body="display_type" type="string">
+  Display format. One of: `GRID`, `KANBAN`.
+</ParamField>
+
+<ParamField body="visible_columns" type="array[string]">
+  Columns to display in this view.
+</ParamField>
+
+<ParamField body="hide_empty_columns" type="boolean">
+  Whether to hide columns with no data.
+</ParamField>
+
+<ParamField body="group_by_field" type="string">
+  Field to group results by.
+</ParamField>
+
+---
+
+## Get person watchlist updates
+
+<Info>**GraphQL only**</Info>
+
+Retrieve recent updates to entries in a people watchlist. Available via GraphQL only.
+
+---
+
+## Create people custom field
+
+<Info>**POST** `/watchlists/people/{id_or_urn}/custom_field`</Info>
+
+Add a custom field to a people watchlist.
+
+### Request body
+
+<ParamField body="name" type="string" required>
+  Name of the custom field.
+</ParamField>
+
+<ParamField body="type" type="string" required>
+  Field type. One of: `TEXT`, `NUMBER`, `DATE`, `SINGLE_SELECT`, `MULTI_SELECT`, `PERSON`, `WEBSITE`, `CHECKBOX`, `STATUS`.
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Additional metadata for the field.
+</ParamField>
+
+---
+
+## Delete people custom field
+
+<Info>**DELETE** `/watchlists/people/{id_or_urn}/custom_field`</Info>
+
+Remove a custom field from a people watchlist.
+
+### Request body
+
+<ParamField body="custom_field_urn" type="string" required>
+  The URN of the custom field to delete.
+</ParamField>
+
+---
+
+## Update people custom field
+
+<Info>**PUT** `/watchlists/people/{id_or_urn}/custom_field`</Info>
+
+Update a custom field's name or metadata.
+
+### Request body
+
+<ParamField body="custom_field_urn" type="string" required>
+  The URN of the custom field to update.
+</ParamField>
+
+<ParamField body="name" type="string">
+  Updated name.
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Updated metadata.
+</ParamField>
+
+---
+
+## Upsert people list entries
+
+<Info>**POST** `/watchlists/people/{id_or_urn}/entries`</Info>
+
+Create or update entries in a people watchlist.
+
+### Request body
+
+<ParamField body="entries" type="array" required>
+  Array of entry objects with person identifiers and custom field values.
+</ParamField>
+
+---
+
+## Get people list entries (paginated)
+
+<Info>**GET** `/watchlists/people/{id_or_urn}/entries`</Info>
+
+Retrieve paginated list entries.
+
+### Query parameters
+
+<ParamField query="page" type="integer">
+  Page number.
+</ParamField>
+
+<ParamField query="size" type="integer" default="50">
+  Results per page.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor.
+</ParamField>
+
+---
+
+## Delete people list entries
+
+<Info>**POST** `/watchlists/people/{id_or_urn}/entries:batchDelete`</Info>
+
+Delete entries from a people watchlist.
+
+### Request body
+
+<ParamField body="entries" type="array" required>
+  Array of entry identifiers to delete.
+</ParamField>
+
+---
+
+## Get people import
+
+<Info>**GET** `/watchlists/people/imports/{id_or_urn}`</Info>
+
+Get details about a people list import operation.
+
+---
+
+## Get people import entries
+
+<Info>**GET** `/watchlists/people/imports/{id_or_urn}/entries`</Info>
+
+Retrieve entries from a people import operation.
+
+---
+
+## Get people list imports
+
+<Info>**GET** `/watchlists/people/{id_or_urn}/imports`</Info>
+
+Retrieve all imports for a people watchlist.
+
+### Query parameters
+
+<ParamField query="page" type="integer">
+  Page number.
+</ParamField>
+
+<ParamField query="size" type="integer" default="50">
+  Results per page.
+</ParamField>

@@ -1,0 +1,127 @@
+---
+title: Enrich
+description: Enrich companies and people by providing a URL or identifier
+---
+
+The Enrich endpoints allow you to look up and trigger enrichment for companies and people.
+
+## Enrich a company
+
+<Info>**POST** `/companies`</Info>
+
+Look up a company by providing one or more identifiers. If the company exists in our database, you receive the full profile. If not, enrichment is triggered.
+
+### Query parameters
+
+<ParamField query="website_url" type="string">
+  The company's website URL.
+</ParamField>
+
+<ParamField query="website_domain" type="string">
+  The company's website domain (e.g., `harmonic.ai`).
+</ParamField>
+
+<ParamField query="linkedin_url" type="string">
+  The company's LinkedIn URL.
+</ParamField>
+
+<ParamField query="crunchbase_url" type="string">
+  The company's Crunchbase URL.
+</ParamField>
+
+<ParamField query="pitchbook_url" type="string">
+  The company's PitchBook URL.
+</ParamField>
+
+<ParamField query="twitter_url" type="string">
+  The company's Twitter/X URL.
+</ParamField>
+
+<ParamField query="instagram_url" type="string">
+  The company's Instagram URL.
+</ParamField>
+
+<ParamField query="facebook_url" type="string">
+  The company's Facebook URL.
+</ParamField>
+
+<ParamField query="angellist_url" type="string">
+  The company's AngelList URL.
+</ParamField>
+
+<ParamField query="monster_url" type="string">
+  The company's Monster URL.
+</ParamField>
+
+<ParamField query="indeed_url" type="string">
+  The company's Indeed URL.
+</ParamField>
+
+<ParamField query="stackoverflow_url" type="string">
+  The company's Stack Overflow URL.
+</ParamField>
+
+### Example
+
+```bash
+curl -X POST \
+  'https://api.harmonic.ai/companies?website_domain=harmonic.ai' \
+  -H 'accept: application/json' \
+  -H 'apikey: your_api_key'
+```
+
+### Response codes
+
+| Code | Meaning |
+|------|---------|
+| `200` | Company found — full profile returned |
+| `201` | Company exists, enrichment triggered — check back in a few hours |
+| `404` | Company not found, enrichment triggered |
+
+---
+
+## Enrich a person
+
+<Info>**POST** `/persons`</Info>
+
+Look up a person by their LinkedIn URL. If the person exists, you receive the full profile. If not, enrichment is triggered.
+
+### Query parameters
+
+<ParamField query="linkedin_url" type="string" required>
+  The person's LinkedIn URL.
+</ParamField>
+
+### Example
+
+```bash
+curl -X POST \
+  'https://api.harmonic.ai/persons?linkedin_url=https://linkedin.com/in/example' \
+  -H 'accept: application/json' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Get enrichment status
+
+<Info>**GET** `/enrichment_status`</Info>
+
+Check the enrichment status of one or more entities.
+
+### Query parameters
+
+<ParamField query="ids" type="array[integer]">
+  Array of entity IDs to check.
+</ParamField>
+
+<ParamField query="urns" type="array[string]">
+  Array of entity URNs to check.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/enrichment_status?ids=123&ids=456' \
+  -H 'apikey: your_api_key'
+```

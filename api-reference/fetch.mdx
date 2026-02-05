@@ -1,0 +1,203 @@
+---
+title: Fetch
+description: Retrieve detailed company and person profiles
+---
+
+The Fetch endpoints allow you to retrieve full profiles for companies and people by ID or URN.
+
+## Get company by ID
+
+<Info>**GET** `/companies/{id_or_urn}`</Info>
+
+Retrieve a single company profile.
+
+### Path parameters
+
+<ParamField path="id_or_urn" type="string" required>
+  The company ID or URN.
+</ParamField>
+
+### Query parameters
+
+<ParamField query="include_fields" type="array[string]">
+  Specific fields to include in the response. Omit to return all fields.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/companies/12345' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Get companies by ID
+
+<Info>**GET** `/companies`</Info>
+
+Retrieve multiple company profiles in a single request. Maximum: 50 companies.
+
+### Query parameters
+
+<ParamField query="ids" type="array[integer]">
+  Array of company IDs.
+</ParamField>
+
+<ParamField query="urns" type="array[string]">
+  Array of company URNs.
+</ParamField>
+
+<ParamField query="include_fields" type="array[string]">
+  Specific fields to include in the response.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/companies?ids=123&ids=456&ids=789' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Batch get companies by ID
+
+<Info>**POST** `/companies/batchGet`</Info>
+
+Retrieve up to 500 company profiles in a single request.
+
+### Request body
+
+<ParamField body="ids" type="array[integer]">
+  Array of company IDs.
+</ParamField>
+
+<ParamField body="urns" type="array[string]">
+  Array of company URNs.
+</ParamField>
+
+<ParamField body="include_fields" type="array[string]">
+  Specific fields to include in the response.
+</ParamField>
+
+### Example
+
+```bash
+curl -X POST 'https://api.harmonic.ai/companies/batchGet' \
+  -H 'apikey: your_api_key' \
+  -H 'Content-Type: application/json' \
+  -d '{"ids": [123, 456, 789, 1011]}'
+```
+
+---
+
+## Get employees from company
+
+<Info>**GET** `/companies/{id_or_urn}/employees`</Info>
+
+Retrieve employees of a company with pagination and filtering.
+
+### Path parameters
+
+<ParamField path="id_or_urn" type="string" required>
+  The company ID or URN.
+</ParamField>
+
+### Query parameters
+
+<ParamField query="size" type="integer" default="50">
+  Number of results per page.
+</ParamField>
+
+<ParamField query="page" type="integer" default="0">
+  Page number.
+</ParamField>
+
+<ParamField query="user_connection_status" type="string">
+  Filter by connection status. One of: `TEAM_CONNECTION`, `NO_CONNECTION`.
+</ParamField>
+
+<ParamField query="employee_status" type="string">
+  Filter by employee status. One of: `ACTIVE`, `ACTIVE_AND_NOT_ACTIVE`, `NOT_ACTIVE`.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/companies/12345/employees?size=20&employee_status=ACTIVE' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Get person by ID
+
+<Info>**GET** `/persons/{id_or_urn}`</Info>
+
+Retrieve a single person profile.
+
+### Path parameters
+
+<ParamField path="id_or_urn" type="string" required>
+  The person ID or URN.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/persons/67890' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Get persons by ID
+
+<Info>**GET** `/persons`</Info>
+
+Retrieve multiple person profiles. Maximum: 50 persons.
+
+### Query parameters
+
+<ParamField query="ids" type="array[integer]">
+  Array of person IDs.
+</ParamField>
+
+<ParamField query="urns" type="array[string]">
+  Array of person URNs.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/persons?ids=123&ids=456' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Batch get persons by ID
+
+<Info>**POST** `/persons/batchGet`</Info>
+
+Retrieve up to 500 person profiles in a single request.
+
+### Request body
+
+<ParamField body="ids" type="array[integer]">
+  Array of person IDs.
+</ParamField>
+
+<ParamField body="urns" type="array[string]">
+  Array of person URNs.
+</ParamField>
+
+### Example
+
+```bash
+curl -X POST 'https://api.harmonic.ai/persons/batchGet' \
+  -H 'apikey: your_api_key' \
+  -H 'Content-Type: application/json' \
+  -d '{"ids": [123, 456, 789]}'
+```

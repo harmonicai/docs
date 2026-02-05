@@ -1,0 +1,73 @@
+---
+title: Pagination
+description: Navigate through large result sets using cursor-based pagination
+---
+
+Endpoints that may return a large number of results accept pagination parameters, allowing you to cycle through pages with a capped number of results.
+
+## Cursor-based pagination
+
+We recommend using cursor-based pagination, which offers better performance and usability.
+
+### Request parameters
+
+<ParamField query="size" type="integer" default="50">
+  The number of results to return per page.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Cursor indicating where to pick up results. Omit for the first page.
+</ParamField>
+
+### Response fields
+
+The response includes a `page_info` object (or `pageInfo` in GraphQL):
+
+<ResponseField name="page_info" type="object">
+  <Expandable title="properties">
+    <ResponseField name="has_next" type="boolean">
+      Whether there are more results available. In GraphQL, this field is `hasNext`.
+    </ResponseField>
+    <ResponseField name="cursor" type="string">
+      The current cursor position.
+    </ResponseField>
+    <ResponseField name="next" type="string">
+      Token to pass as the `cursor` parameter in the next request.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Example
+
+First request (no cursor):
+
+```bash
+curl 'https://api.harmonic.ai/savedSearches:results/12345?size=50' \
+  -H 'apikey: your_api_key'
+```
+
+Response:
+
+```json
+{
+  "results": [...],
+  "page_info": {
+    "has_next": true,
+    "cursor": "abc123",
+    "next": "def456"
+  }
+}
+```
+
+Next page:
+
+```bash
+curl 'https://api.harmonic.ai/savedSearches:results/12345?size=50&cursor=def456' \
+  -H 'apikey: your_api_key'
+```
+
+## Nested people
+
+The nested `people` field within a company response contains at most 60 active employees, ordered by: founders, then executives, then employees — sorted from most to least tenured.
+
+To paginate through all active employees of a company, use the [Get employees from company](/api-reference/fetch#get-employees-from-company) endpoint.
