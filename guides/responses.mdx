@@ -1,0 +1,29 @@
+---
+title: Responses and errors
+description: HTTP status codes and error handling
+sidebarTitle: Responses & errors
+---
+
+The Harmonic API uses standard HTTP status codes to indicate the success or failure of a request.
+
+## Status codes
+
+| Code | Status | Description |
+|------|--------|-------------|
+| `200` | OK | Everything worked as expected. You have the latest data. |
+| `201` | Enrichment Triggered | The entity exists and enrichment was triggered. Check back in a few hours for updated data. |
+| `400` | Bad Request | The request was unacceptable, often due to a missing required parameter. |
+| `402` | Over Quota | You've exceeded your plan quota for this endpoint. |
+| `403` | Forbidden | No valid API key provided, or the entity is private. Make sure to set any list or search to **Shared** before accessing via API. |
+| `404` | Not Found | The requested resource doesn't exist. For enrich endpoints, this means enrichment was triggered. |
+| `422` | Validation Error | A validation error occurred with the request parameters. |
+| `429` | Too Many Requests | Rate limit exceeded. See [Rate limits](/guides/rate-limits) for details. |
+| `5XX` | Internal Server Error | An error occurred with the Harmonic API. Contact [support@harmonic.ai](mailto:support@harmonic.ai) if this persists. |
+
+## Error handling
+
+When you receive an error response, the response body typically includes a message describing the issue.
+
+<Note>
+For `201` and `404` responses on enrich endpoints, the entity may still be processing. Check back after a few hours for enriched data using the [Get enrichment status](/api-reference/enrich#get-enrichment-status) endpoint.
+</Note>

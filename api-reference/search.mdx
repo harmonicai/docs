@@ -1,0 +1,310 @@
+---
+title: Search
+description: Search for companies, people, and investors
+---
+
+The Search endpoints allow you to query saved searches, perform natural language search, and find similar companies.
+
+## Get saved searches
+
+<Info>**GET** `/savedSearches`</Info>
+
+Retrieve all saved searches for your team.
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/savedSearches' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Get company saved search results
+
+<Info>**GET** `/savedSearches:results/{id_or_urn}`</Info>
+
+Retrieve results from a company saved search with metadata. Supports cursor-based pagination.
+
+### Path parameters
+
+<ParamField path="id_or_urn" type="string" required>
+  The saved search ID or URN.
+</ParamField>
+
+### Query parameters
+
+<ParamField query="size" type="integer" default="50">
+  Number of results to return.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor for the next page.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/savedSearches:results/12345?size=50' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Get people saved search results
+
+<Info>**GET** `/savedSearches:results/{id_or_urn}`</Info>
+
+Retrieve results from a people saved search with metadata. Supports cursor-based pagination.
+
+### Path parameters
+
+<ParamField path="id_or_urn" type="string" required>
+  The saved search ID or URN.
+</ParamField>
+
+### Query parameters
+
+<ParamField query="size" type="integer" default="50">
+  Number of results to return.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor for the next page.
+</ParamField>
+
+---
+
+## Get investor saved search results
+
+<Info>**GET** `/savedSearches:results/{id_or_urn}`</Info>
+
+Retrieve results from an investor saved search with metadata. Supports cursor-based pagination.
+
+### Path parameters
+
+<ParamField path="id_or_urn" type="string" required>
+  The saved search ID or URN.
+</ParamField>
+
+### Query parameters
+
+<ParamField query="size" type="integer" default="50">
+  Number of results to return.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor for the next page.
+</ParamField>
+
+---
+
+## Get company saved search net new results
+
+<Info>**GET** `/savedSearches/{id_or_urn}/net_new_results`</Info>
+
+Retrieve new results that have appeared in a company saved search since a given date. Supports cursor-based pagination.
+
+### Path parameters
+
+<ParamField path="id_or_urn" type="string" required>
+  The saved search ID or URN.
+</ParamField>
+
+### Query parameters
+
+<ParamField query="new_results_since" type="string" required>
+  ISO 8601 datetime string. Only results added after this date are returned.
+</ParamField>
+
+<ParamField query="size" type="integer" default="50">
+  Number of results to return.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor for the next page.
+</ParamField>
+
+---
+
+## Get people saved search net new results
+
+<Info>**GET** `/savedSearches/{id_or_urn}/net_new_results`</Info>
+
+Retrieve new results from a people saved search since a given date. Supports cursor-based pagination.
+
+### Path parameters
+
+<ParamField path="id_or_urn" type="string" required>
+  The saved search ID or URN.
+</ParamField>
+
+### Query parameters
+
+<ParamField query="new_results_since" type="string" required>
+  ISO 8601 datetime string.
+</ParamField>
+
+<ParamField query="size" type="integer" default="50">
+  Number of results to return.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor for the next page.
+</ParamField>
+
+---
+
+## Search companies by natural language
+
+<Info>**GET** `/search/search_agent`</Info>
+
+Search for companies using a natural language query.
+
+### Query parameters
+
+<ParamField query="query" type="string" required>
+  Natural language search query (e.g., "AI startups in healthcare").
+</ParamField>
+
+<ParamField query="similarity_threshold" type="float">
+  Minimum similarity score for results.
+</ParamField>
+
+<ParamField query="size" type="integer" default="50">
+  Number of results to return. Maximum: 1000.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor for the next page.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/search/search_agent?query=AI%20startups%20in%20healthcare&size=20' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Search companies by keywords
+
+<Warning>
+**Deprecated** — Use [Search companies by natural language](#search-companies-by-natural-language) instead.
+</Warning>
+
+<Info>**POST** `/search/companies_by_keywords`</Info>
+
+### Request body
+
+<ParamField body="keywords" type="string">
+  Search keywords.
+</ParamField>
+
+<ParamField body="contains_all_of_keywords" type="array[string]">
+  Results must contain all of these keywords.
+</ParamField>
+
+<ParamField body="contains_any_of_keywords" type="array[string]">
+  Results must contain at least one of these keywords.
+</ParamField>
+
+<ParamField body="does_not_contain_keywords" type="array[string]">
+  Exclude results containing these keywords.
+</ParamField>
+
+<ParamField body="include_ids_only" type="array[integer]">
+  Restrict results to these company IDs.
+</ParamField>
+
+<ParamField body="type" type="string">
+  Search type filter.
+</ParamField>
+
+<ParamField body="page" type="integer">
+  Page number.
+</ParamField>
+
+<ParamField body="size" type="integer">
+  Results per page.
+</ParamField>
+
+---
+
+## Save a search
+
+<Info>**POST** `/savedSearches`</Info>
+
+Save a new search for later use.
+
+### Request body
+
+<ParamField body="keywords" type="string" required>
+  The search keywords.
+</ParamField>
+
+<ParamField body="name" type="string" required>
+  A name for the saved search.
+</ParamField>
+
+### Example
+
+```bash
+curl -X POST 'https://api.harmonic.ai/savedSearches' \
+  -H 'apikey: your_api_key' \
+  -H 'Content-Type: application/json' \
+  -d '{"keywords": "AI healthcare", "name": "AI Healthcare Companies"}'
+```
+
+---
+
+## Get similar companies
+
+<Info>**GET** `/search/similar_companies/{id_or_urn}`</Info>
+
+Find companies similar to a given company.
+
+### Path parameters
+
+<ParamField path="id_or_urn" type="string" required>
+  The company ID or URN.
+</ParamField>
+
+### Query parameters
+
+<ParamField query="size" type="integer" default="50">
+  Number of results to return. Maximum: 1000.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/search/similar_companies/12345?size=10' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Get search typeahead results
+
+<Info>**GET** `/search/typeahead`</Info>
+
+Get typeahead suggestions for a search query.
+
+### Query parameters
+
+<ParamField query="query" type="string" required>
+  The search query string.
+</ParamField>
+
+<ParamField query="search_type" type="string" required>
+  The type of entity to search. One of: `COMPANY`, `PERSON`, `INVESTOR`.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/search/typeahead?query=harm&search_type=COMPANY' \
+  -H 'apikey: your_api_key'
+```

@@ -1,0 +1,31 @@
+---
+title: Rate limits
+description: Understand API rate limits and best practices
+---
+
+The Harmonic API allows a maximum of **10 requests per second**. Exceeding this limit returns a `429` HTTP response.
+
+## Response headers
+
+Every API response includes rate limit headers:
+
+| Header | Description |
+|--------|-------------|
+| `X-Ratelimit-Limit-Second` | Maximum number of requests allowed per second |
+| `X-Ratelimit-Remaining-Second` | Remaining requests before the rate limit is reached |
+
+### Example response
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Ratelimit-Limit-Second: 10
+X-Ratelimit-Remaining-Second: 5
+```
+
+## Best practices
+
+- **Check rate limit headers** on each response to monitor your usage.
+- **Implement exponential backoff** when you receive a `429` response.
+- **Use batch endpoints** (like `POST /companies/batchGet`) to fetch multiple records in a single request instead of making individual calls.
+- **Use the bulk dataset** if you need to make millions of requests. Contact [support@harmonic.ai](mailto:support@harmonic.ai) for details on Snowflake, S3, and BigQuery options.

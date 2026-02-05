@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Harmonic",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#FE5D45",
+    "light": "#FF7A66",
+    "dark": "#E54A33"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -16,53 +16,105 @@
           {
             "group": "Getting started",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "guides/introduction",
+              "guides/authentication",
+              "guides/pagination",
+              "guides/rate-limits",
+              "guides/responses"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "API Reference",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Overview",
             "pages": [
               "api-reference/introduction"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Enrich",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/enrich"
+            ]
+          },
+          {
+            "group": "Search",
+            "pages": [
+              "api-reference/search"
+            ]
+          },
+          {
+            "group": "Fetch",
+            "pages": [
+              "api-reference/fetch"
+            ]
+          },
+          {
+            "group": "Financing",
+            "pages": [
+              "api-reference/financing"
+            ]
+          },
+          {
+            "group": "Network",
+            "pages": [
+              "api-reference/network"
+            ]
+          },
+          {
+            "group": "Company Lists",
+            "pages": [
+              "api-reference/company-lists"
+            ]
+          },
+          {
+            "group": "People Lists",
+            "pages": [
+              "api-reference/people-lists"
+            ]
+          },
+          {
+            "group": "Company Attachments",
+            "pages": [
+              "api-reference/company-attachments"
+            ]
+          },
+          {
+            "group": "Person Attachments",
+            "pages": [
+              "api-reference/person-attachments"
+            ]
+          },
+          {
+            "group": "Company Global Fields",
+            "pages": [
+              "api-reference/company-global-fields"
+            ]
+          },
+          {
+            "group": "Person Global Fields",
+            "pages": [
+              "api-reference/person-global-fields"
+            ]
+          },
+          {
+            "group": "Customer",
+            "pages": [
+              "api-reference/customer"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "GraphQL",
+        "groups": [
+          {
+            "group": "GraphQL",
+            "pages": [
+              "graphql/overview"
             ]
           }
         ]
@@ -71,14 +123,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "API Dashboard",
+          "href": "https://console.harmonic.ai/docs/dashboard",
+          "icon": "chart-line"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Manage API Keys",
+          "href": "https://console.harmonic.ai/docs/manage-api/keys",
+          "icon": "key"
         }
       ]
     }
@@ -91,32 +143,27 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@harmonic.ai"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Console",
+      "href": "https://console.harmonic.ai"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/harmaboreal",
+      "github": "https://github.com/harmonic-ai",
+      "linkedin": "https://linkedin.com/company/harmonic-ai"
+    }
+  },
+  "api": {
+    "baseUrl": "https://api.harmonic.ai",
+    "auth": {
+      "method": "key",
+      "name": "apikey"
     }
   }
 }

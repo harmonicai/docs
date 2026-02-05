@@ -1,0 +1,46 @@
+---
+title: Customer
+description: Retrieve customer and user information
+---
+
+The Customer endpoints allow you to retrieve information about your Harmonic account and team members.
+
+## Get customer by URN
+
+<Info>**GET** `/customers/{urn}`</Info>
+
+Retrieve customer account details by URN.
+
+### Path parameters
+
+<ParamField path="urn" type="string" required>
+  The customer URN.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/customers/urn:harmonic:customer:12345' \
+  -H 'apikey: your_api_key'
+```
+
+---
+
+## Get customer users
+
+<Info>**GET** `/customers/{urn}/users`</Info>
+
+Retrieve all users associated with a customer account.
+
+### Path parameters
+
+<ParamField path="urn" type="string" required>
+  The customer URN.
+</ParamField>
+
+### Example
+
+```bash
+curl 'https://api.harmonic.ai/customers/urn:harmonic:customer:12345/users' \
+  -H 'apikey: your_api_key'
+```

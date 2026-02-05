@@ -1,0 +1,45 @@
+---
+title: Authentication
+description: Authenticate your requests to the Harmonic API
+---
+
+To authenticate your requests, set the `apikey` query parameter or header to your team's API key.
+
+You can find and manage your API key at [console.harmonic.ai/docs/manage-api/keys](https://console.harmonic.ai/docs/manage-api/keys).
+
+## Using a header
+
+Pass your API key in the `apikey` header:
+
+```bash
+curl -X POST \
+  'https://api.harmonic.ai/companies?website_domain=harmonic.ai' \
+  -H 'accept: application/json' \
+  -H 'apikey: your_api_key'
+```
+
+## Using a query parameter
+
+Alternatively, pass your API key as the `apikey` query parameter:
+
+```bash
+curl -X POST \
+  'https://api.harmonic.ai/companies?website_domain=harmonic.ai&apikey=your_api_key' \
+  -H 'accept: application/json'
+```
+
+<Note>
+API keys are team-level — one key per customer account. Keep your API key secure and do not share it publicly.
+</Note>
+
+## GraphQL authentication
+
+The GraphQL endpoint also accepts the `apikey` header:
+
+```bash
+curl -X POST \
+  'https://api.harmonic.ai/graphql' \
+  -H 'Content-Type: application/json' \
+  -H 'apikey: your_api_key' \
+  -d '{"query": "{ company(id: 1) { name } }"}'
+```

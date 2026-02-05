@@ -1,0 +1,50 @@
+---
+title: Introduction
+description: Welcome to the Harmonic API
+---
+
+Welcome to the Harmonic API — the goal of these guides is to make using our API as easy and delightful as possible. If we haven't hit the mark, please consider sending us feedback at [support@harmonic.ai](mailto:support@harmonic.ai).
+
+## Overview
+
+The Harmonic API gives you programmatic access to our startup intelligence platform — an ever-growing database of 30M+ companies and 190M+ people. You can:
+
+- **Enrich** companies and people by providing a URL or identifier
+- **Search** for companies using saved searches or natural language
+- **Fetch** detailed company and person profiles
+- **Manage lists** of companies and people with custom fields
+- **Access network data** to see your team's connections
+- **Upload attachments** and manage custom global fields
+
+## Base URL
+
+All REST API requests should be made to:
+
+```
+https://api.harmonic.ai/
+```
+
+For GraphQL requests, use:
+
+```
+https://api.harmonic.ai/graphql
+```
+
+## GraphQL Explorer
+
+We also offer a [GraphQL Explorer](/graphql/overview) that allows you to precisely define the fields in your response, reducing payload size and improving performance.
+
+## Bulk data
+
+If you plan to make a particularly large number of requests (in the millions), please let us know in advance. We offer a weekly-updated bulk dataset in data warehouses (Snowflake, S3, BigQuery). Reach out to [support@harmonic.ai](mailto:support@harmonic.ai) to learn more.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/guides/authentication">
+    Set up your API key to start making requests.
+  </Card>
+  <Card title="API Reference" icon="code" href="/api-reference/introduction">
+    Browse all available endpoints.
+  </Card>
+</CardGroup>
