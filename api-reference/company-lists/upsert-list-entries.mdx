@@ -1,0 +1,8 @@
+---
+title: "Upsert list entries"
+api: "POST /watchlists/companies/{id_or_urn}/entries"
+description: "Create or update entries in a company watchlist"
+---
+
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="entries" type="array" required>Array of entry objects. Each entry can include a `company_urn` or canonical identifiers, along with custom field values.</ParamField>

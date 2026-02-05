@@ -1,0 +1,9 @@
+---
+title: "Batch get companies by ID"
+api: "POST /companies/batchGet"
+description: "Retrieve up to 500 company profiles in a single request"
+---
+
+<ParamField body="ids" type="array[integer]">Array of company IDs.</ParamField>
+<ParamField body="urns" type="array[string]">Array of company URNs.</ParamField>
+<ParamField body="include_fields" type="array[string]">Specific fields to include in the response.</ParamField>

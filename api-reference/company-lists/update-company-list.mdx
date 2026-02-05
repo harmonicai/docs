@@ -1,0 +1,9 @@
+---
+title: "Update company list"
+api: "PUT /watchlists/companies/{id_or_urn}"
+description: "Update a company watchlist's name or sharing settings"
+---
+
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="name" type="string">Updated name.</ParamField>
+<ParamField body="shared_with_team" type="boolean">Updated sharing setting.</ParamField>

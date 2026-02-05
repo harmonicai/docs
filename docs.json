@@ -14,7 +14,7 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Introduction",
             "pages": [
               "guides/introduction",
               "guides/authentication",
@@ -29,81 +29,153 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "Overview",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
             "group": "Enrich",
             "pages": [
-              "api-reference/enrich"
+              "api-reference/enrich/enrich-company",
+              "api-reference/enrich/enrich-person",
+              "api-reference/enrich/get-enrichment-status"
             ]
           },
           {
             "group": "Search",
             "pages": [
-              "api-reference/search"
+              "api-reference/search/get-saved-searches",
+              "api-reference/search/get-company-search-results",
+              "api-reference/search/get-people-search-results",
+              "api-reference/search/get-investor-search-results",
+              "api-reference/search/get-company-net-new-results",
+              "api-reference/search/get-people-net-new-results",
+              "api-reference/search/search-natural-language",
+              "api-reference/search/search-by-keywords",
+              "api-reference/search/save-search",
+              "api-reference/search/get-similar-companies",
+              "api-reference/search/get-typeahead-results"
             ]
           },
           {
             "group": "Fetch",
             "pages": [
-              "api-reference/fetch"
+              "api-reference/fetch/get-company-by-id",
+              "api-reference/fetch/get-companies-by-id",
+              "api-reference/fetch/batch-get-companies",
+              "api-reference/fetch/get-employees",
+              "api-reference/fetch/get-person-by-id",
+              "api-reference/fetch/get-persons-by-id",
+              "api-reference/fetch/batch-get-persons"
             ]
           },
           {
-            "group": "Financing",
+            "group": "Deal Data - Investors and Financing",
             "pages": [
-              "api-reference/financing"
+              "api-reference/deal-data/get-investor-by-urn",
+              "api-reference/deal-data/get-investors-by-urns",
+              "api-reference/deal-data/get-investor-by-canonical"
             ]
           },
           {
-            "group": "Network",
+            "group": "Network Mapping",
             "pages": [
-              "api-reference/network"
+              "api-reference/network/get-team-connections",
+              "api-reference/network/get-people-in-network",
+              "api-reference/network/get-companies-in-network"
             ]
           },
           {
             "group": "Company Lists",
             "pages": [
-              "api-reference/company-lists"
+              "api-reference/company-lists/get-all-company-lists",
+              "api-reference/company-lists/get-company-list",
+              "api-reference/company-lists/get-company-list-entries",
+              "api-reference/company-lists/create-company-list",
+              "api-reference/company-lists/update-company-list",
+              "api-reference/company-lists/add-companies-to-list",
+              "api-reference/company-lists/remove-companies-from-list",
+              "api-reference/company-lists/delete-list",
+              "api-reference/company-lists/upsert-named-view",
+              "api-reference/company-lists/create-custom-field",
+              "api-reference/company-lists/delete-custom-field",
+              "api-reference/company-lists/update-custom-field",
+              "api-reference/company-lists/upsert-list-entries",
+              "api-reference/company-lists/get-list-entries",
+              "api-reference/company-lists/delete-list-entries",
+              "api-reference/company-lists/get-import-details",
+              "api-reference/company-lists/get-import-entries",
+              "api-reference/company-lists/get-list-imports"
             ]
           },
           {
             "group": "People Lists",
             "pages": [
-              "api-reference/people-lists"
+              "api-reference/people-lists/get-all-people-lists",
+              "api-reference/people-lists/get-people-list",
+              "api-reference/people-lists/get-people-list-entries",
+              "api-reference/people-lists/create-people-list",
+              "api-reference/people-lists/update-people-list",
+              "api-reference/people-lists/add-people-to-list",
+              "api-reference/people-lists/remove-people-from-list",
+              "api-reference/people-lists/delete-list",
+              "api-reference/people-lists/upsert-named-view",
+              "api-reference/people-lists/get-people-updates",
+              "api-reference/people-lists/create-custom-field",
+              "api-reference/people-lists/delete-custom-field",
+              "api-reference/people-lists/update-custom-field",
+              "api-reference/people-lists/upsert-list-entries",
+              "api-reference/people-lists/get-list-entries",
+              "api-reference/people-lists/delete-list-entries",
+              "api-reference/people-lists/get-import-details",
+              "api-reference/people-lists/get-import-entries",
+              "api-reference/people-lists/get-list-imports"
             ]
           },
           {
             "group": "Company Attachments",
             "pages": [
-              "api-reference/company-attachments"
+              "api-reference/company-attachments/get-attachments",
+              "api-reference/company-attachments/initiate-upload",
+              "api-reference/company-attachments/complete-uploads",
+              "api-reference/company-attachments/rename-attachment",
+              "api-reference/company-attachments/get-contents",
+              "api-reference/company-attachments/delete-attachment"
             ]
           },
           {
             "group": "Person Attachments",
             "pages": [
-              "api-reference/person-attachments"
+              "api-reference/person-attachments/get-attachments",
+              "api-reference/person-attachments/create-attachments",
+              "api-reference/person-attachments/complete-uploads",
+              "api-reference/person-attachments/rename-attachment",
+              "api-reference/person-attachments/get-contents",
+              "api-reference/person-attachments/delete-attachment"
             ]
           },
           {
             "group": "Company Global Fields",
             "pages": [
-              "api-reference/company-global-fields"
+              "api-reference/company-global-fields/get-global-fields",
+              "api-reference/company-global-fields/create-global-field",
+              "api-reference/company-global-fields/update-global-field",
+              "api-reference/company-global-fields/delete-global-field",
+              "api-reference/company-global-fields/upsert-global-field-values",
+              "api-reference/company-global-fields/get-global-field-values"
             ]
           },
           {
             "group": "Person Global Fields",
             "pages": [
-              "api-reference/person-global-fields"
+              "api-reference/person-global-fields/get-global-fields",
+              "api-reference/person-global-fields/create-global-field",
+              "api-reference/person-global-fields/update-global-field",
+              "api-reference/person-global-fields/delete-global-field",
+              "api-reference/person-global-fields/upsert-global-field-values",
+              "api-reference/person-global-fields/get-global-field-values"
             ]
           },
           {
             "group": "Customer",
             "pages": [
-              "api-reference/customer"
+              "api-reference/customer/get-customer-by-urn",
+              "api-reference/customer/get-customer-users"
             ]
           }
         ]

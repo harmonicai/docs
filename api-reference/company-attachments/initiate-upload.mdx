@@ -1,0 +1,8 @@
+---
+title: "Initiate company attachment upload"
+api: "POST /companies/{id_or_urn}/attachments"
+description: "Start a file upload for a company, returns a pre-signed upload URL"
+---
+
+<ParamField path="id_or_urn" type="string" required>The company ID or URN.</ParamField>
+<ParamField body="attachments" type="array" required>Array of attachment objects with `name`, `extension`, and `size` (in bytes).</ParamField>

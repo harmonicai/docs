@@ -1,0 +1,11 @@
+---
+title: "Get employees from company"
+api: "GET /companies/{id_or_urn}/employees"
+description: "Retrieve employees of a company with pagination and filtering"
+---
+
+<ParamField path="id_or_urn" type="string" required>The company ID or URN.</ParamField>
+<ParamField query="size" type="integer" default="50">Number of results per page.</ParamField>
+<ParamField query="page" type="integer" default="0">Page number.</ParamField>
+<ParamField query="user_connection_status" type="string">Filter by connection status. One of: `TEAM_CONNECTION`, `NO_CONNECTION`.</ParamField>
+<ParamField query="employee_status" type="string">Filter by employee status. One of: `ACTIVE`, `ACTIVE_AND_NOT_ACTIVE`, `NOT_ACTIVE`.</ParamField>

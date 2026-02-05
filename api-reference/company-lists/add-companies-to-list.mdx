@@ -1,0 +1,9 @@
+---
+title: "Add companies to list"
+api: "POST /watchlists/companies/{id_or_urn}:addCompanies"
+description: "Add companies to an existing watchlist"
+---
+
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="ids" type="array[integer]">Company IDs to add.</ParamField>
+<ParamField body="urns" type="array[string]">Company URNs to add.</ParamField>

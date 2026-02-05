@@ -1,0 +1,7 @@
+---
+title: "Delete custom field"
+api: "DELETE /watchlists/people/{id_or_urn}/custom_field"
+description: "Remove a custom field from a people watchlist"
+---
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="custom_field_urn" type="string" required>The URN of the custom field to delete.</ParamField>

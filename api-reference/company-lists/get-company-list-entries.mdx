@@ -1,0 +1,9 @@
+---
+title: "Get companies list entries"
+api: "GET /watchlists/companies/{id_or_urn}/entries"
+description: "Retrieve entries from a company watchlist"
+---
+
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField query="sort_field" type="string">Field to sort results by.</ParamField>
+<ParamField query="urns" type="array[string]">Filter to specific company URNs.</ParamField>

@@ -1,0 +1,22 @@
+---
+title: "Get investor by URN"
+api: "GET /graphql"
+description: "Retrieve an investor profile by URN"
+---
+
+<Note>This endpoint is available via **GraphQL only** and requires a **paid add-on**. Contact support@harmonic.ai to enable access.</Note>
+
+Retrieve an investor profile by URN. Partners support cursor-based pagination. Investments and co-investors support offset-based pagination.
+
+```graphql
+query {
+  investor(urn: "urn:harmonic:investor:12345") {
+    name
+    description
+    partners(first: 10) {
+      edges { node { name linkedinUrl } }
+      pageInfo { hasNext cursor }
+    }
+  }
+}
+```

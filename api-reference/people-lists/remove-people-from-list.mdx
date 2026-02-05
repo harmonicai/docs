@@ -1,0 +1,8 @@
+---
+title: "Remove people from list"
+api: "POST /watchlists/people/{id_or_urn}:removePeople"
+description: "Remove people from a watchlist"
+---
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="ids" type="array[integer]">Person IDs to remove.</ParamField>
+<ParamField body="urns" type="array[string]">Person URNs to remove.</ParamField>

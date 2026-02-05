@@ -1,0 +1,9 @@
+---
+title: "Get list imports"
+api: "GET /watchlists/companies/{id_or_urn}/imports"
+description: "Retrieve all imports for a company watchlist"
+---
+
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField query="page" type="integer">Page number.</ParamField>
+<ParamField query="size" type="integer" default="50">Results per page. Maximum: 1000.</ParamField>

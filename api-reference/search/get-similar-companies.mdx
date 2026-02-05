@@ -1,0 +1,8 @@
+---
+title: "Get similar companies"
+api: "GET /search/similar_companies/{id_or_urn}"
+description: "Find companies similar to a given company"
+---
+
+<ParamField path="id_or_urn" type="string" required>The company ID or URN.</ParamField>
+<ParamField query="size" type="integer" default="50">Number of results to return. Maximum: 1000.</ParamField>

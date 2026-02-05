@@ -1,0 +1,8 @@
+---
+title: "Create person attachments"
+api: "POST /persons/{id_or_urn}/attachments"
+description: "Start a file upload for a person, returns a pre-signed upload URL"
+---
+
+<ParamField path="id_or_urn" type="string" required>The person ID or URN.</ParamField>
+<ParamField body="attachments" type="array" required>Array of attachment objects with `name`, `extension`, and `size` (in bytes).</ParamField>

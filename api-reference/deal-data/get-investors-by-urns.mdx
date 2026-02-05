@@ -1,0 +1,16 @@
+---
+title: "Get investors by URNs"
+api: "GET /graphql"
+description: "Retrieve multiple investor profiles in a single query"
+---
+
+<Note>This endpoint is available via **GraphQL only** and requires a **paid add-on**.</Note>
+
+```graphql
+query {
+  investors(urns: ["urn:harmonic:investor:123", "urn:harmonic:investor:456"]) {
+    name
+    description
+  }
+}
+```

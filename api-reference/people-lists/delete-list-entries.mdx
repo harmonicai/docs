@@ -1,0 +1,7 @@
+---
+title: "Delete list entries"
+api: "POST /watchlists/people/{id_or_urn}/entries:batchDelete"
+description: "Delete entries from a people watchlist"
+---
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="entries" type="array" required>Array of entry identifiers to delete.</ParamField>

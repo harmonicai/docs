@@ -1,0 +1,8 @@
+---
+title: "Batch get persons by ID"
+api: "POST /persons/batchGet"
+description: "Retrieve up to 500 person profiles in a single request"
+---
+
+<ParamField body="ids" type="array[integer]">Array of person IDs.</ParamField>
+<ParamField body="urns" type="array[string]">Array of person URNs.</ParamField>

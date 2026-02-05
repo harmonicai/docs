@@ -1,0 +1,19 @@
+---
+title: "Get global field values"
+api: "GET /graphql"
+description: "Retrieve global field values for companies"
+---
+
+<Note>This endpoint is available via **GraphQL only**.</Note>
+
+```graphql
+query {
+  company(id: 12345) {
+    name
+    globalFields {
+      fieldUrn
+      value
+    }
+  }
+}
+```

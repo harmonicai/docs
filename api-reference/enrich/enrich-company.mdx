@@ -1,0 +1,26 @@
+---
+title: "Enrich a company"
+api: "POST /companies"
+description: "Look up and enrich a company by providing one or more identifiers"
+---
+
+If the company exists in our database, you receive the full profile. If not, enrichment is triggered.
+
+<ParamField query="website_url" type="string">The company's website URL.</ParamField>
+<ParamField query="website_domain" type="string">The company's website domain (e.g., `harmonic.ai`).</ParamField>
+<ParamField query="linkedin_url" type="string">The company's LinkedIn URL.</ParamField>
+<ParamField query="crunchbase_url" type="string">The company's Crunchbase URL.</ParamField>
+<ParamField query="pitchbook_url" type="string">The company's PitchBook URL.</ParamField>
+<ParamField query="twitter_url" type="string">The company's Twitter/X URL.</ParamField>
+<ParamField query="instagram_url" type="string">The company's Instagram URL.</ParamField>
+<ParamField query="facebook_url" type="string">The company's Facebook URL.</ParamField>
+<ParamField query="angellist_url" type="string">The company's AngelList URL.</ParamField>
+<ParamField query="monster_url" type="string">The company's Monster URL.</ParamField>
+<ParamField query="indeed_url" type="string">The company's Indeed URL.</ParamField>
+<ParamField query="stackoverflow_url" type="string">The company's Stack Overflow URL.</ParamField>
+
+| Code | Meaning |
+|------|---------|
+| `200` | Company found — full profile returned |
+| `201` | Company exists, enrichment triggered — check back in a few hours |
+| `404` | Company not found, enrichment triggered |

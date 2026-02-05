@@ -1,0 +1,9 @@
+---
+title: "Create new company list"
+api: "POST /watchlists/companies"
+description: "Create a new company watchlist"
+---
+
+<ParamField body="name" type="string" required>Name of the watchlist.</ParamField>
+<ParamField body="shared_with_team" type="boolean">Whether to share this list with your team.</ParamField>
+<ParamField body="companies" type="array">Initial list of company IDs or URNs to add.</ParamField>
