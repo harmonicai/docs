@@ -1,0 +1,12 @@
+---
+title: "Upsert named view"
+api: "POST /watchlists/companies/{id_or_urn}/named_views"
+description: "Create or update a named view for a company watchlist"
+---
+
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="name" type="string" required>Name of the view.</ParamField>
+<ParamField body="display_type" type="string">Display format. One of: `GRID`, `KANBAN`.</ParamField>
+<ParamField body="visible_columns" type="array[string]">Columns to display in this view.</ParamField>
+<ParamField body="hide_empty_columns" type="boolean">Whether to hide columns with no data.</ParamField>
+<ParamField body="group_by_field" type="string">Field to group results by (for Kanban view).</ParamField>

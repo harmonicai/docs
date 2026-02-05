@@ -1,0 +1,19 @@
+---
+title: "Get global field values"
+api: "GET /graphql"
+description: "Retrieve global field values for people"
+---
+
+<Note>This endpoint is available via **GraphQL only**.</Note>
+
+```graphql
+query {
+  person(id: 67890) {
+    name
+    globalFields {
+      fieldUrn
+      value
+    }
+  }
+}
+```

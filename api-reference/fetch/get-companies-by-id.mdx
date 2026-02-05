@@ -1,0 +1,9 @@
+---
+title: "Get companies by ID"
+api: "GET /companies"
+description: "Retrieve multiple company profiles in a single request (max 50)"
+---
+
+<ParamField query="ids" type="array[integer]">Array of company IDs.</ParamField>
+<ParamField query="urns" type="array[string]">Array of company URNs.</ParamField>
+<ParamField query="include_fields" type="array[string]">Specific fields to include in the response.</ParamField>

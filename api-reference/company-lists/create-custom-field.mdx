@@ -1,0 +1,10 @@
+---
+title: "Create custom field"
+api: "POST /watchlists/companies/{id_or_urn}/custom_field"
+description: "Add a custom field to a company watchlist"
+---
+
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="name" type="string" required>Name of the custom field.</ParamField>
+<ParamField body="type" type="string" required>Field type. One of: `TEXT`, `NUMBER`, `DATE`, `SINGLE_SELECT`, `MULTI_SELECT`, `PERSON`, `WEBSITE`, `CHECKBOX`, `STATUS`.</ParamField>
+<ParamField body="metadata" type="object">Additional metadata for the field (e.g., select options).</ParamField>

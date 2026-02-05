@@ -1,0 +1,16 @@
+---
+title: "[Deprecated] Search companies by keywords"
+api: "POST /search/companies_by_keywords"
+description: "Search for companies by keywords (deprecated)"
+---
+
+<Warning>This endpoint is deprecated. Use [Search companies by natural language](/api-reference/search/search-natural-language) instead.</Warning>
+
+<ParamField body="keywords" type="string">Search keywords.</ParamField>
+<ParamField body="contains_all_of_keywords" type="array[string]">Results must contain all of these keywords.</ParamField>
+<ParamField body="contains_any_of_keywords" type="array[string]">Results must contain at least one of these keywords.</ParamField>
+<ParamField body="does_not_contain_keywords" type="array[string]">Exclude results containing these keywords.</ParamField>
+<ParamField body="include_ids_only" type="array[integer]">Restrict results to these company IDs.</ParamField>
+<ParamField body="type" type="string">Search type filter.</ParamField>
+<ParamField body="page" type="integer">Page number.</ParamField>
+<ParamField body="size" type="integer">Results per page.</ParamField>

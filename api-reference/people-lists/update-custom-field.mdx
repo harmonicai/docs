@@ -1,0 +1,9 @@
+---
+title: "Update custom field"
+api: "PUT /watchlists/people/{id_or_urn}/custom_field"
+description: "Update a custom field's name or metadata"
+---
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="custom_field_urn" type="string" required>The URN of the custom field.</ParamField>
+<ParamField body="name" type="string">Updated name.</ParamField>
+<ParamField body="metadata" type="object">Updated metadata.</ParamField>

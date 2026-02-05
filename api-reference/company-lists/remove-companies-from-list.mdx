@@ -1,0 +1,9 @@
+---
+title: "Remove companies from list"
+api: "POST /watchlists/companies/{id_or_urn}:removeCompanies"
+description: "Remove companies from a watchlist"
+---
+
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="ids" type="array[integer]">Company IDs to remove.</ParamField>
+<ParamField body="urns" type="array[string]">Company URNs to remove.</ParamField>

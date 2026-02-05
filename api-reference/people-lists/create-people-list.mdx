@@ -1,0 +1,8 @@
+---
+title: "Create new people list"
+api: "POST /watchlists/people"
+description: "Create a new people watchlist"
+---
+<ParamField body="name" type="string" required>Name of the watchlist.</ParamField>
+<ParamField body="shared_with_team" type="boolean">Whether to share this list with your team.</ParamField>
+<ParamField body="people" type="array">Initial list of person IDs or URNs to add.</ParamField>

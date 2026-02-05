@@ -1,0 +1,8 @@
+---
+title: "Create a global field"
+api: "POST /companies/custom_field"
+description: "Create a new company global field"
+---
+<ParamField body="name" type="string" required>Name of the global field.</ParamField>
+<ParamField body="type" type="string" required>Field type. One of: `TEXT`, `NUMBER`, `DATE`, `SINGLE_SELECT`, `MULTI_SELECT`, `PERSON`, `WEBSITE`, `CHECKBOX`, `STATUS`.</ParamField>
+<ParamField body="metadata" type="object">Additional metadata (e.g., select options).</ParamField>

@@ -1,0 +1,9 @@
+---
+title: "Get list entries"
+api: "GET /watchlists/people/{id_or_urn}/entries"
+description: "Retrieve paginated list entries"
+---
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField query="page" type="integer">Page number.</ParamField>
+<ParamField query="size" type="integer" default="50">Results per page.</ParamField>
+<ParamField query="cursor" type="string">Pagination cursor.</ParamField>

@@ -1,0 +1,19 @@
+---
+title: "Get investor by canonical"
+api: "GET /graphql"
+description: "Look up an investor by their canonical URL"
+---
+
+<Note>This endpoint is available via **GraphQL only** and requires a **paid add-on**.</Note>
+
+<ParamField query="url" type="string" required>The canonical URL of the investor.</ParamField>
+
+```graphql
+query {
+  investorByCanonical(url: "https://example-vc.com") {
+    name
+    urn
+    description
+  }
+}
+```

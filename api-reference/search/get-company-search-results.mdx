@@ -1,0 +1,9 @@
+---
+title: "Get company saved search results with metadata"
+api: "GET /savedSearches:results/{id_or_urn}"
+description: "Retrieve company results from a saved search with metadata"
+---
+
+<ParamField path="id_or_urn" type="string" required>The saved search ID or URN.</ParamField>
+<ParamField query="size" type="integer" default="50">Number of results to return.</ParamField>
+<ParamField query="cursor" type="string">Pagination cursor for the next page.</ParamField>

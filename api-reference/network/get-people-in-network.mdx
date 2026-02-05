@@ -1,0 +1,23 @@
+---
+title: "Get all people in team network"
+api: "GET /graphql"
+description: "Retrieve people in your team's network"
+---
+
+<Note>This endpoint is available via **GraphQL only**.</Note>
+
+Supports cursor-based pagination with a maximum of 100 results per page. Additional filters are available for date range filtering on connection activity.
+
+<ParamField query="first" type="integer" default="100">Number of results to return. Maximum: 100.</ParamField>
+<ParamField query="after" type="string">Pagination cursor.</ParamField>
+
+```graphql
+query {
+  peopleInNetwork(first: 50) {
+    edges {
+      node { name linkedinUrl currentCompany { name } }
+    }
+    pageInfo { hasNext cursor }
+  }
+}
+```

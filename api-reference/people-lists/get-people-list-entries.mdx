@@ -1,0 +1,8 @@
+---
+title: "Get people list entries"
+api: "GET /watchlists/people/{id_or_urn}/entries"
+description: "Retrieve entries from a people watchlist"
+---
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField query="sort_field" type="string">Field to sort results by.</ParamField>
+<ParamField query="sort_descending" type="boolean">Whether to sort in descending order.</ParamField>

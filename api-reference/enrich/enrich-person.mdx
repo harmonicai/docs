@@ -1,0 +1,15 @@
+---
+title: "Enrich a person"
+api: "POST /persons"
+description: "Look up and enrich a person by LinkedIn URL"
+---
+
+If the person exists in our database, you receive the full profile. If not, enrichment is triggered.
+
+<ParamField query="linkedin_url" type="string" required>The person's LinkedIn URL.</ParamField>
+
+| Code | Meaning |
+|------|---------|
+| `200` | Person found — full profile returned |
+| `201` | Person exists, enrichment triggered |
+| `404` | Person not found, enrichment triggered |

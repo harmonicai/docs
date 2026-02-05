@@ -1,0 +1,7 @@
+---
+title: "Upsert list entries"
+api: "POST /watchlists/people/{id_or_urn}/entries"
+description: "Create or update entries in a people watchlist"
+---
+<ParamField path="id_or_urn" type="string" required>The watchlist ID or URN.</ParamField>
+<ParamField body="entries" type="array" required>Array of entry objects with person identifiers and custom field values.</ParamField>
