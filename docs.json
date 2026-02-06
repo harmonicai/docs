@@ -45,6 +45,7 @@
               "api-reference/search/get-investor-search-results",
               "api-reference/search/get-company-net-new-results",
               "api-reference/search/get-people-net-new-results",
+              "api-reference/search/clear-net-new-results",
               "api-reference/search/search-natural-language",
               "api-reference/search/search-by-keywords",
               "api-reference/search/save-search",

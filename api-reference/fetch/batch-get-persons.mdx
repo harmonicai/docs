@@ -4,5 +4,7 @@ api: "POST /persons/batchGet"
 description: "Retrieve up to 500 person profiles in a single request"
 ---
 
+<Warning>Maximum of 500 IDs or URNs per request.</Warning>
+
 <ParamField body="ids" type="array[integer]">Array of person IDs.</ParamField>
 <ParamField body="urns" type="array[string]">Array of person URNs.</ParamField>

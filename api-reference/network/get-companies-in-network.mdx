@@ -1,23 +1,33 @@
 ---
 title: "Get all companies in team network"
-api: "GET /graphql"
 description: "Retrieve companies in your team's network"
 ---
 
-<Note>This endpoint is available via **GraphQL only**.</Note>
+<Info>This endpoint is available via **GraphQL only**. See the [GraphQL overview](/graphql/overview) for authentication and query details.</Info>
 
-Supports cursor-based pagination with a maximum of 100 results per page.
-
-<ParamField query="first" type="integer" default="100">Number of results to return. Maximum: 100.</ParamField>
-<ParamField query="after" type="string">Pagination cursor.</ParamField>
+Retrieve all companies connected to your team's network. Supports cursor-based pagination with a default of 10 results per page (maximum 100).
 
 ```graphql
-query {
-  companiesInNetwork(first: 50) {
+query GetCompaniesInNetwork {
+  getCompaniesInNetwork(first: 10, after: null) {
     edges {
-      node { name domain connectionCount }
+      node {
+        name
+        domain
+        connectionCount
+      }
     }
-    pageInfo { hasNext cursor }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
   }
 }
 ```
+
+### Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `first` | Integer | `10` | Number of results to return. Maximum: 100. |
+| `after` | String | — | Cursor from the previous page's `pageInfo.endCursor`. |

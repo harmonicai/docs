@@ -5,7 +5,27 @@ description: "Retrieve employees of a company with pagination and filtering"
 ---
 
 <ParamField path="id_or_urn" type="string" required>The company ID or URN.</ParamField>
-<ParamField query="size" type="integer" default="50">Number of results per page.</ParamField>
+<ParamField query="size" type="integer" default="10">Number of results per page.</ParamField>
 <ParamField query="page" type="integer" default="0">Page number.</ParamField>
 <ParamField query="user_connection_status" type="string">Filter by connection status. One of: `TEAM_CONNECTION`, `NO_CONNECTION`.</ParamField>
 <ParamField query="employee_status" type="string">Filter by employee status. One of: `ACTIVE`, `ACTIVE_AND_NOT_ACTIVE`, `NOT_ACTIVE`.</ParamField>
+<ParamField query="employee_group_type" type="string">Filter by employee group type. One of: `ALL`, `LEADERSHIP`, `ENGINEERING`, `BUSINESS`, `OTHER`.</ParamField>
+
+### Example response
+
+```json
+{
+  "results": [
+    {
+      "id": 67890,
+      "full_name": "Jane Smith",
+      "title": "VP of Engineering",
+      "linkedin_url": "https://linkedin.com/in/janesmith",
+      "employee_status": "ACTIVE"
+    }
+  ],
+  "total_count": 150,
+  "page": 0,
+  "size": 10
+}
+```

@@ -5,6 +5,6 @@ description: "Retrieve new company results since a given date"
 ---
 
 <ParamField path="id_or_urn" type="string" required>The saved search ID or URN.</ParamField>
-<ParamField query="new_results_since" type="string" required>ISO 8601 datetime. Only results added after this date are returned.</ParamField>
+<ParamField query="new_results_since" type="string">ISO 8601 datetime. Only results added after this date are returned. Defaults to 24 hours ago if omitted.</ParamField>
 <ParamField query="size" type="integer" default="50">Number of results to return.</ParamField>
 <ParamField query="cursor" type="string">Pagination cursor for the next page.</ParamField>

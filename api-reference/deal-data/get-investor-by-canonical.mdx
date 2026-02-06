@@ -1,19 +1,22 @@
 ---
-title: "Get investor by canonical"
-api: "GET /graphql"
+title: "Get investor by canonical URL"
 description: "Look up an investor by their canonical URL"
 ---
 
-<Note>This endpoint is available via **GraphQL only** and requires a **paid add-on**.</Note>
+<Info>This endpoint is available via **GraphQL only**. See the [GraphQL overview](/graphql/overview) for authentication and query details.</Info>
 
-<ParamField query="url" type="string" required>The canonical URL of the investor.</ParamField>
+<Note>Investor data is a **paid add-on**. Contact support@harmonic.ai to enable access.</Note>
+
+Look up an investor by their canonical URL (e.g., their website or Crunchbase profile).
 
 ```graphql
-query {
-  investorByCanonical(url: "https://example-vc.com") {
+query GetInvestorByCanonical {
+  getInvestorByCanonicalUrl(url: "https://example-vc.com") {
     name
     urn
     description
+    investmentsCount
+    exitsCount
   }
 }
 ```

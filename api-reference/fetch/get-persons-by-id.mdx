@@ -4,5 +4,7 @@ api: "GET /persons"
 description: "Retrieve multiple person profiles in a single request (max 50)"
 ---
 
+<Warning>Maximum of 50 IDs or URNs per request. For larger batches, use [Batch get persons](/api-reference/fetch/batch-get-persons).</Warning>
+
 <ParamField query="ids" type="array[integer]">Array of person IDs.</ParamField>
 <ParamField query="urns" type="array[string]">Array of person URNs.</ParamField>

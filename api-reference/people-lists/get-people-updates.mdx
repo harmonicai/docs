@@ -1,7 +1,32 @@
 ---
 title: "Get all people updates in a list"
-api: "GET /graphql"
 description: "Retrieve recent updates to entries in a people watchlist"
 ---
 
-<Note>This endpoint is available via **GraphQL only**.</Note>
+<Info>This endpoint is available via **GraphQL only**. See the [GraphQL overview](/graphql/overview) for authentication and query details.</Info>
+
+Retrieve recent updates (job changes, title changes, etc.) for people in a specific watchlist. Supports cursor-based pagination.
+
+```graphql
+query GetPeopleUpdates {
+  getPeopleWatchlistUpdates(
+    watchlistUrn: "urn:harmonic:people_watchlist:12345"
+    first: 25
+  ) {
+    edges {
+      node {
+        person {
+          name
+          linkedinUrl
+        }
+        updateType
+        updatedAt
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+```

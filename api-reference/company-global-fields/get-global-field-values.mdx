@@ -1,18 +1,23 @@
 ---
 title: "Get global field values"
-api: "GET /graphql"
 description: "Retrieve global field values for companies"
 ---
 
-<Note>This endpoint is available via **GraphQL only**.</Note>
+<Info>This endpoint is available via **GraphQL only**. See the [GraphQL overview](/graphql/overview) for authentication and query details.</Info>
+
+Retrieve the values of custom global fields for a specific company. Global fields are configured via the REST API and their values can be read through GraphQL.
 
 ```graphql
-query {
-  company(id: 12345) {
+query GetCompanyGlobalFieldValues {
+  getCompanyById(id: 12345) {
     name
-    globalFields {
+    customFields {
       fieldUrn
-      value
+      textValue
+      numericValue
+      dateValue
+      singleSelectValue
+      multiSelectValues
     }
   }
 }

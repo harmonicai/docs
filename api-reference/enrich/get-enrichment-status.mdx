@@ -4,5 +4,28 @@ api: "GET /enrichment_status"
 description: "Check the enrichment status of one or more entities"
 ---
 
+Check the enrichment status of one or more companies or people. Use this after triggering enrichment via the [Enrich a company](/api-reference/enrich/enrich-company) or [Enrich a person](/api-reference/enrich/enrich-person) endpoints.
+
 <ParamField query="ids" type="array[integer]">Array of entity IDs to check.</ParamField>
 <ParamField query="urns" type="array[string]">Array of entity URNs to check.</ParamField>
+
+### Enrichment statuses
+
+| Status | Description |
+|--------|-------------|
+| `ENRICHED` | Enrichment is complete. The full profile is available. |
+| `ENRICHING` | Enrichment is in progress. Check back in a few minutes. |
+| `QUEUED` | Enrichment has been requested and is waiting to be processed. |
+| `FAILED` | Enrichment failed. The entity could not be enriched. |
+| `NOT_FOUND` | The entity was not found in our database and no enrichment was triggered. |
+
+### Example response
+
+```json
+{
+  "statuses": {
+    "12345": "ENRICHED",
+    "67890": "ENRICHING"
+  }
+}
+```
