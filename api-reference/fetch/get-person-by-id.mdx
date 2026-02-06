@@ -5,3 +5,30 @@ description: "Retrieve a single person profile"
 ---
 
 <ParamField path="id_or_urn" type="string" required>The person ID or URN.</ParamField>
+
+<Warning>Person data is a snapshot that refreshes periodically. If you need real-time data, use the [Enrich a person](/api-reference/enrich/enrich-person) endpoint to trigger a refresh.</Warning>
+
+### Example response
+
+```json
+{
+  "id": 67890,
+  "urn": "urn:harmonic:person:67890",
+  "full_name": "Jane Smith",
+  "first_name": "Jane",
+  "last_name": "Smith",
+  "linkedin_url": "https://linkedin.com/in/janesmith",
+  "title": "VP of Engineering",
+  "company": {
+    "id": 12345,
+    "name": "Harmonic",
+    "domain": "harmonic.ai"
+  },
+  "emails": ["jane@harmonic.ai"],
+  "location": {
+    "city": "San Francisco",
+    "state": "California",
+    "country": "United States"
+  }
+}
+```

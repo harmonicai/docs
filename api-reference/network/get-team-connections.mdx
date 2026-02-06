@@ -5,3 +5,25 @@ description: "Retrieve your team's connections to a specific company"
 ---
 
 <ParamField path="id_or_urn" type="string" required>The company ID or URN.</ParamField>
+
+### Example response
+
+```json
+{
+  "connections": [
+    {
+      "person": {
+        "id": 67890,
+        "full_name": "Jane Smith",
+        "linkedin_url": "https://linkedin.com/in/janesmith",
+        "title": "VP of Engineering"
+      },
+      "connected_user": {
+        "name": "John Doe",
+        "email": "john@yourcompany.com"
+      },
+      "connection_type": "FIRST_DEGREE"
+    }
+  ]
+}
+```

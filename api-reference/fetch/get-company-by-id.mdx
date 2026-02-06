@@ -6,3 +6,31 @@ description: "Retrieve a single company profile"
 
 <ParamField path="id_or_urn" type="string" required>The company ID or URN.</ParamField>
 <ParamField query="include_fields" type="array[string]">Specific fields to include in the response. Omit to return all fields.</ParamField>
+
+<Warning>Company data is a snapshot that refreshes periodically. If you need real-time data, use the [Enrich a company](/api-reference/enrich/enrich-company) endpoint to trigger a refresh.</Warning>
+
+### Example response
+
+```json
+{
+  "id": 12345,
+  "urn": "urn:harmonic:company:12345",
+  "name": "Harmonic",
+  "domain": "harmonic.ai",
+  "description": "Startup intelligence platform",
+  "headcount": 150,
+  "founded_date": "2020-01-01",
+  "funding": {
+    "total_funding": 50000000,
+    "last_round_date": "2023-06-15",
+    "last_round_type": "SERIES_B",
+    "last_round_amount": 30000000
+  },
+  "linkedin_url": "https://linkedin.com/company/harmonic-ai",
+  "location": {
+    "city": "San Francisco",
+    "state": "California",
+    "country": "United States"
+  }
+}
+```

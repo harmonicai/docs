@@ -19,7 +19,7 @@ Pass your API key via the `apikey` header, the same as the REST API:
 curl -X POST 'https://api.harmonic.ai/graphql' \
   -H 'Content-Type: application/json' \
   -H 'apikey: your_api_key' \
-  -d '{"query": "{ company(id: 1) { name domain } }"}'
+  -d '{"query": "{ getCompanyById(id: 1) { name domain } }"}'
 ```
 
 ## GraphQL Explorer
@@ -37,8 +37,8 @@ The explorer provides:
 ### Get a company profile
 
 ```graphql
-query {
-  company(id: 12345) {
+query GetCompany {
+  getCompanyById(id: 12345) {
     name
     domain
     description
@@ -57,8 +57,8 @@ query {
 ### Get a person profile
 
 ```graphql
-query {
-  person(id: 67890) {
+query GetPerson {
+  getPersonById(id: 67890) {
     name
     linkedinUrl
     currentTitle
@@ -70,20 +70,35 @@ query {
 }
 ```
 
-### Paginate through search results
+### Enrich a company (mutation)
 
 ```graphql
-query {
-  savedSearchResults(urn: "urn:harmonic:saved_search:123", first: 50) {
+mutation EnrichCompany {
+  enrichCompany(input: { websiteDomain: "example.com" }) {
+    id
+    name
+    domain
+    enrichmentStatus
+  }
+}
+```
+
+### Paginate through results
+
+GraphQL queries use cursor-based pagination. Pass `first` for page size and `after` for the cursor:
+
+```graphql
+query GetPeopleInNetwork {
+  getPeopleInNetwork(first: 25, after: "cursor_from_previous_page") {
     edges {
       node {
         name
-        domain
+        linkedinUrl
       }
     }
     pageInfo {
-      hasNext
-      cursor
+      hasNextPage
+      endCursor
     }
   }
 }
@@ -93,12 +108,12 @@ query {
 
 Some features are only available through GraphQL:
 
-- **Financing / Deal Data** — Investor profiles, investments, and co-investors (paid add-on)
-- **Network queries** — People and companies in your team's network
-- **Watchlist updates** — Recent changes to people watchlist entries
-- **Global field values** — Read custom global field values on companies and people
-
-See the relevant API Reference sections for details on each.
+- [**Deal Data — Investors and Financing**](/api-reference/deal-data/get-investor-by-urn) — Investor profiles, investments, and co-investors (paid add-on)
+- [**Network Mapping — People in network**](/api-reference/network/get-people-in-network) — People connected to your team
+- [**Network Mapping — Companies in network**](/api-reference/network/get-companies-in-network) — Companies connected to your team
+- [**People List Updates**](/api-reference/people-lists/get-people-updates) — Recent changes to people watchlist entries
+- [**Company Global Field Values**](/api-reference/company-global-fields/get-global-field-values) — Read custom global field values on companies
+- [**Person Global Field Values**](/api-reference/person-global-fields/get-global-field-values) — Read custom global field values on people
 
 ## Pagination in GraphQL
 
@@ -107,14 +122,14 @@ GraphQL queries use cursor-based pagination with `first`/`after` parameters:
 | Parameter | Description |
 |-----------|-------------|
 | `first` | Number of results to return |
-| `after` | Cursor from the previous page's `pageInfo.cursor` |
+| `after` | Cursor from the previous page's `pageInfo.endCursor` |
 
 The response includes a `pageInfo` object:
 
 | Field | Description |
 |-------|-------------|
-| `hasNext` | Whether more results are available |
-| `cursor` | Cursor for fetching the next page |
+| `hasNextPage` | Whether more results are available |
+| `endCursor` | Cursor for fetching the next page |
 
 ## Rate limits
 

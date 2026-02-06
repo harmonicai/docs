@@ -4,12 +4,41 @@ api: "POST /persons"
 description: "Look up and enrich a person by LinkedIn URL"
 ---
 
-If the person exists in our database, you receive the full profile. If not, enrichment is triggered.
+If the person exists in our database, you receive the full profile. If not, enrichment is triggered and you can poll for status using the [Get enrichment status](/api-reference/enrich/get-enrichment-status) endpoint.
 
 <ParamField query="linkedin_url" type="string" required>The person's LinkedIn URL.</ParamField>
+
+### Response codes
 
 | Code | Meaning |
 |------|---------|
 | `200` | Person found — full profile returned |
 | `201` | Person exists, enrichment triggered |
 | `404` | Person not found, enrichment triggered |
+
+### Example response (200)
+
+```json
+{
+  "id": 67890,
+  "urn": "urn:harmonic:person:67890",
+  "full_name": "Jane Smith",
+  "first_name": "Jane",
+  "last_name": "Smith",
+  "linkedin_url": "https://linkedin.com/in/janesmith",
+  "title": "VP of Engineering",
+  "company": {
+    "id": 12345,
+    "name": "Harmonic",
+    "domain": "harmonic.ai"
+  },
+  "emails": ["jane@harmonic.ai"],
+  "location": {
+    "city": "San Francisco",
+    "state": "California",
+    "country": "United States"
+  }
+}
+```
+
+<Warning>Enrichment can take up to a few hours. Use the [Get enrichment status](/api-reference/enrich/get-enrichment-status) endpoint to check progress.</Warning>

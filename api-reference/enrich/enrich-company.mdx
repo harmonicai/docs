@@ -4,7 +4,9 @@ api: "POST /companies"
 description: "Look up and enrich a company by providing one or more identifiers"
 ---
 
-If the company exists in our database, you receive the full profile. If not, enrichment is triggered.
+If the company exists in our database, you receive the full profile. If not, enrichment is triggered and you can poll for status using the [Get enrichment status](/api-reference/enrich/get-enrichment-status) endpoint.
+
+Provide at least one identifier to look up the company.
 
 <ParamField query="website_url" type="string">The company's website URL.</ParamField>
 <ParamField query="website_domain" type="string">The company's website domain (e.g., `harmonic.ai`).</ParamField>
@@ -19,8 +21,38 @@ If the company exists in our database, you receive the full profile. If not, enr
 <ParamField query="indeed_url" type="string">The company's Indeed URL.</ParamField>
 <ParamField query="stackoverflow_url" type="string">The company's Stack Overflow URL.</ParamField>
 
+### Response codes
+
 | Code | Meaning |
 |------|---------|
 | `200` | Company found — full profile returned |
 | `201` | Company exists, enrichment triggered — check back in a few hours |
 | `404` | Company not found, enrichment triggered |
+
+### Example response (200)
+
+```json
+{
+  "id": 12345,
+  "urn": "urn:harmonic:company:12345",
+  "name": "Harmonic",
+  "domain": "harmonic.ai",
+  "description": "Startup intelligence platform",
+  "headcount": 150,
+  "founded_date": "2020-01-01",
+  "funding": {
+    "total_funding": 50000000,
+    "last_round_date": "2023-06-15",
+    "last_round_type": "SERIES_B",
+    "last_round_amount": 30000000
+  },
+  "linkedin_url": "https://linkedin.com/company/harmonic-ai",
+  "location": {
+    "city": "San Francisco",
+    "state": "California",
+    "country": "United States"
+  }
+}
+```
+
+<Warning>Enrichment can take up to a few hours. Use the [Get enrichment status](/api-reference/enrich/get-enrichment-status) endpoint to check progress.</Warning>

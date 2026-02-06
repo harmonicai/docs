@@ -1,0 +1,18 @@
+---
+title: "Clear net new results"
+api: "POST /savedSearches/{id_or_urn}/clear_net_new_results"
+description: "Reset the net new results counter for a saved search"
+---
+
+Clears the net new results for a saved search so they no longer appear as new. This is typically called after you have processed the net new results.
+
+<ParamField path="id_or_urn" type="string" required>The saved search ID or URN.</ParamField>
+
+### Example request
+
+```bash
+curl -X POST 'https://api.harmonic.ai/savedSearches/urn:harmonic:saved_search:123/clear_net_new_results' \
+  -H 'apikey: your_api_key'
+```
+
+A successful request returns a `200` status code with an empty response body.
