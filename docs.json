@@ -233,10 +233,12 @@
     }
   },
   "api": {
-    "baseUrl": "https://api.harmonic.ai",
-    "auth": {
-      "method": "key",
-      "name": "apikey"
+    "mdx": {
+      "server": "https://api.harmonic.ai",
+      "auth": {
+        "method": "key",
+        "name": "apikey"
+      }
     }
   }
 }
